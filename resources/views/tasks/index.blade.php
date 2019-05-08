@@ -52,8 +52,17 @@
 			    {{csrf_field()}}
 			    {{method_field('delete')}}
 			    <button type="submit" class="btn btn-default bg-danger">
-		    <i class="fa fa-trash"></i> Удалить
-		</button>
+				<i class="fa fa-trash"></i> Удалить
+			    </button>
+			</form>
+		    </td>
+		    <td>
+			<form method="POST" action="{{url('tasks/'.$task->id.'/edit')}}">
+			    {{csrf_field()}}
+			    {{method_field('get')}}
+			    <button type="submit" class="btn btn-default bg-info">
+				<i class="fas fa-broom"></i>Редактировать
+			    </button>
 			</form>
 		    </td>
 		</tr>

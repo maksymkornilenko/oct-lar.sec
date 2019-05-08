@@ -4,11 +4,11 @@ use Illuminate\Http\Request;
 use App\Task;
 
 Route::get('/', function () {
-    $tasks= Task::all();
+    $tasks = Task::all();
     //TODO delete debug info
-    return view('tasks.index',[
-	'tasks'=>$tasks,//значение переменной tasks спроецируется в переменную tasks внутри view
-	]); //в уроке это вид tasks
+    return view('tasks.index', [
+	'tasks' => $tasks, //значение переменной tasks спроецируется в переменную tasks внутри view
+    ]); //в уроке это вид tasks
 });
 
 Route::post('/tasks', function(Request $request) {
@@ -25,7 +25,10 @@ Route::post('/tasks', function(Request $request) {
     $task->save();
     return redirect('/');
 });
-Route::delete('/tasks/{task}', function (Task $task){
+Route::delete('/tasks/{task}', function (Task $task) {
     $task->delete();
     return redirect('/');
 });
+//Route::edit('/tasks/{task}/edit', function( Task $task) {
+//    
+//});
