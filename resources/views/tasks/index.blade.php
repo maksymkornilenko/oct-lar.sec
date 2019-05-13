@@ -5,7 +5,7 @@
     <!-- Отображение ошибок проверки ввода -->
     @include('common.errors')
     <!-- Форма новой задачи -->
-    <form action="{{ url('tasks') }}" method="POST" class="form-horizontal">
+    <form action="{{ route('tasks_store') }}" method="POST" class="form-horizontal">
 	{{ csrf_field() }}
 	<!-- Имя задачи -->
 	<div class="form-group">
@@ -48,7 +48,7 @@
 			<div>{{ $task->name }}</div>
 		    </td>
 		    <td>
-			<form method="POST" action="{{url('tasks/'.$task->id)}}">
+                        <form method="POST" action="{{route('tasks_destroy', $task->id)}}">
 			    {{csrf_field()}}
 			    {{method_field('delete')}}
 			    <button type="submit" class="btn btn-default bg-danger">
@@ -57,7 +57,7 @@
 			</form>
 		    </td>
 		    <td>
-			<form method="POST" action="{{url('tasks/'.$task->id.'/edit')}}">
+			<form method="POST" action="{{route('tasks_edit', $task->id)}}">
 			    {{csrf_field()}}
 			    {{method_field('get')}}
 			    <button type="submit" class="btn btn-default bg-info">
