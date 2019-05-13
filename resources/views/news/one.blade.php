@@ -5,20 +5,19 @@
     <!-- Отображение ошибок проверки ввода -->
     @include('common.errors')
     <!-- Форма новой задачи -->
-    <form action="{{ route('news_add') }}" method="POST" class="form-horizontal">
+    <form action="{{ route('news_index') }}" method="POST" class="form-horizontal">
         {{ csrf_field() }}
         {{method_field('get')}}
         <!-- Кнопка открытия формы для добавления новости -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                 <button type="submit" class="btn btn-default bg-success">
-                    <i class="fa fa-plus"></i> Добавить новость
+                    <i class="fa fa-plus"></i> Back
                 </button>
             </div>
         </div>
     </form>
 </div>
-<!-- Текущие задачи -->
 @if (count($news) > 0)
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -27,7 +26,6 @@
     <div class="panel-body">
         <table class="table table-striped task-table">
             <!-- Список новостей -->
-            @foreach ($news as $news)
             <thead>
                 <tr>
                     <th>Заголовок новости</th>
@@ -47,36 +45,6 @@
                     <div>{{ $news->text }}</div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <form method="POST" action="{{route('news_show', $news->id)}}">
-                        {{csrf_field()}}
-                        {{method_field('get')}}
-                        <button type="submit" class="btn btn-default bg-danger">
-                            <i class="fa fa-trash"></i> Показать
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="POST" action="{{route('news_destroy', $news->id)}}">
-                        {{csrf_field()}}
-                        {{method_field('delete')}}
-                        <button type="submit" class="btn btn-default bg-danger">
-                            <i class="fa fa-trash"></i> Удалить
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="POST" action="{{route('news_edit', $news->id)}}">
-                        {{csrf_field()}}
-                        {{method_field('get')}}
-                        <button type="submit" class="btn btn-default bg-info">
-                            <i class="fas fa-broom"></i>Редактировать
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
             </tbody>
         </table>
     </div>
